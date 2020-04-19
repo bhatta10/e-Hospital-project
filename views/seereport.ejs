@@ -1,0 +1,50 @@
+<%- include('./partials/header.ejs'); %>
+<%- include('./partials/sideMenu.ejs'); %>
+<style>
+    #report{
+        align-items: center;
+        text-align: center;
+        font-size: medium;
+        background-color: #ebedee;
+        border:1px solid rgb(67, 65, 75);
+    }
+    .col-sm-5{
+        margin-left: 25%;
+    }
+    .title{
+        text-align: center;
+    }
+    .title-1{
+        font-weight: 700;
+    }
+    .scrollable {
+       height: 700px; /* or any value */
+        overflow-y: auto;
+               }
+    
+</style>
+
+<div class="scrollable" id ="data">
+    <h4 class="title">Reports Collection</h4>
+    <br>    
+<% images.forEach(images => { %>
+<ul>
+<div class="row">
+    <div class="col-sm-5">
+      <div id="report" class="card">
+        <div class="card-body">
+            <img class="image" src= "<%= images.imageUrl %>" alt="Image Here"></img>
+            <br>
+            <br>
+          <h6 class="title-1">Description: <%= images.title %></h6>
+          <h6 class="title-1">Date Uploaded: <%= images.date %></h6>
+          <a href="<%= images.imageUrl %>" class="btn btn-primary">View Report</a>  
+        </div>
+      </div>
+    </div>
+</div> 
+</ul> 
+<% }) %>    
+</div>    
+
+

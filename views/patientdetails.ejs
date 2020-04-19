@@ -1,0 +1,54 @@
+<%- include('./partials/headerDr.ejs'); %>
+<%- include('./partials/sideMenuDr.ejs'); %>
+
+
+<style>
+    .scrollable {
+       height: 700px; /* or any value */
+        overflow-y: auto;
+    }
+    .col-sm-5{
+        margin-left: 30%;
+    }
+</style>
+<body>
+<div class="scrollable" id="data">
+    <h4 class="title" id="title"> More Details of <%=patient.name%> </h4><br>
+
+<!-- For details about patient -->
+
+    <div class="row">
+        <div class="col-sm-5">
+          <div id="report" class="card">  
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Name : <%=patient.name%></li>
+                    <li class="list-group-item">ID : <%=patient.id%></li>
+                    <li class="list-group-item">Token Number: <%=patient.tokenname%></li>
+                    <li class="list-group-item">Email: <%=patient.email%></li>
+                    <li class="list-group-item">Joined: <%=patient.date%> </li>
+                  </ul>  
+            </div>
+          </div>
+        </div>
+    </div> 
+    <br>
+    <h4 class="title">Uploads </h4><br>   
+ <!-- For report display -->
+
+<% report.forEach(report => { %>
+    <ul>
+            <div class="card-body">
+                <div class="col-sm-5">   
+                <img class="image" src= "<%= report.imageUrl %>" alt="Image Here"></img><br>
+              <h6 class="title-1">Description: <%= report.title %></h6>
+              <h6 class="title-1">Date Uploaded: <%= report.date %></h6>
+              <a href="<%= report.imageUrl %>" class="btn btn-primary">View Report</a>  
+                 </div>   
+            </div>
+    </ul>   
+<% }) %>
+</div>
+
+</body>
+</html>

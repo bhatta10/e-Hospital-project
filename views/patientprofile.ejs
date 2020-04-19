@@ -1,0 +1,83 @@
+<%- include('./partials/header.ejs'); %>
+<%- include('./partials/sideMenu.ejs'); %>
+<style>
+    .pro{
+        text-align: center;
+    }
+</style>
+
+<div class="scrollable" id ="data"><br>
+    <h4 class="pro">Profile</h4>
+    <br>
+
+<!--ACTIONS-->
+
+<section id="actions" class="py-4 mb-4">
+  <div class="container">
+    <div class="row">
+      <!-- <% profileimage.forEach(profileimage => { %> -->
+      <div class="col-md-3">
+        <img src="<%=profileimage.imageUrl ||('/public/images/profile.png')%>" class="card-img rounded-circle"></img>
+        <a href="" class="text-muted ml-5" data-toggle="modal" data-target="#changePhotoModal"><i class="fa fa-camera"></i> Change Photo</a>
+      </div>
+      <!-- <% }) %> -->
+      <div class="col-md-3">
+        <a href="" class="btn btn-primary btn-block" data-toggle="modal" data-target="#changePasswordModal">
+          <i class="fa fa-key"></i> Change Password
+        </a>
+      </div>
+      
+      <div class="col-md-3">
+        <a href="" class="btn btn-warning btn-block" data-toggle="modal" data-target="#updateProfileModal">
+          <i class="fa fa-refresh"></i> Update Profile
+        </a>
+      </div> 
+    </div>
+  </div>
+</section>
+
+
+<%- include('./partials/messages.ejs'); %>
+
+<!--PROFILE-->
+<section class="mt-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="text-center pb-3">Personal Informations</h4>
+                
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Name : <%=user.name%></li>
+                  <li class="list-group-item">Email: <%=user.email%></li>
+                  <li class="list-group-item">Joined:<%=user.date%> </li>
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+</section>
+</div>
+
+<!--Change Photo Modal-->
+<div class="modal fade" id="changePhotoModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="passwordModalLabel">
+          Change Photo
+        </h5>
+        <button class="close" data-dismiss="modal" ><span>&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="/change_photo" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="photo" class="form-control-label">Change Photo</label>
+            <input type="file"  name="image" class="form-control">
+          </div>
+           <input type="submit" class="btn btn-sm btn-primary m-2" value="Submit">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
